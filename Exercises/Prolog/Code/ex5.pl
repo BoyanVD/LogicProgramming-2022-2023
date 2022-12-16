@@ -70,3 +70,14 @@ fib(X):- fib(X, _).
 fact1(0, 1).
 fact1(N, F) :- N #> 0, N1 #= N - 1, fact1(N1, F1), F #= F1 * N.
 fact1(X):-nat(N),fact1(N,X).
+
+
+% Generate all finite arithmetic progressions
+is_arithmetic([]).
+is_arithmetic([_]).
+is_arithmetic([A, B]):- A < B.
+is_arithmetic(L):- (L = [X,Y,_|_]),X < Y,
+	not(( append(_, [A, B, C|_], L), (A + C) =\=  (B + B) )).
+
+gen_arithmetic(L):- genAll(L), is_arithmetic(L).
+
