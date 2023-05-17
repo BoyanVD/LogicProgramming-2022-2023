@@ -29,7 +29,7 @@ removeAll(X,[X|T],R):-removeAll(X,T,R).
 removeAll(X,[H|T],[H|R]):-X#\=H,removeAll(X,T,R).
 
 permutation1([],[]).
-permutation1(L,[H|T]):-remove1(H,L,M),permutation1(T,M).
+permutation1(L,[H|T]):-permutation1(T,M), remove1(H,L,M).
 
 reverse1([],[]).
 reverse1([H|T],R):-reverse1(T,RT),append1(RT,[H],R).
